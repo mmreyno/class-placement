@@ -1,0 +1,187 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6347,        178]
+NotebookOptionsPosition[      5797,        155]
+NotebookOutlinePosition[      6153,        171]
+CellTagsIndexPosition[      6110,        168]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"train", " ", "=", " ", 
+   RowBox[{"Import", "[", "\"\<grade9trainingset.csv\>\"", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{
+  3.630867830204905*^9, 3.630869330219862*^9, {3.6308784194843884`*^9, 
+   3.630878437176569*^9}, {3.647603809141411*^9, 3.647603821506596*^9}, {
+   3.6476221441700983`*^9, 3.647622149691883*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"train", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", 
+       RowBox[{"2", ";;", "4"}]}], "]"}], "]"}], "\[Rule]", " ", 
+    RowBox[{"train", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "5"}], "]"}], "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6308784279308167`*^9, 3.630878434709406*^9}, 
+   3.630912148574072*^9, 3.630914959802444*^9, 3.647615163872425*^9, {
+   3.647622067174494*^9, 3.6476220682216997`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"c", " ", "=", " ", 
+  RowBox[{"Classify", "[", "data", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6309142683545713`*^9, 3.630914270905924*^9}, {
+  3.630914966184555*^9, 3.630914981262457*^9}, {3.630958433112419*^9, 
+  3.630958439926065*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ClassifierMeasurements", "[", 
+  RowBox[{"c", ",", "data", ",", "\"\<Accuracy\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.630912241853868*^9, 3.630912242117119*^9}, 
+   3.630914986990252*^9, 3.630958444228683*^9}],
+
+Cell[BoxData[
+ RowBox[{"ClassifierMeasurements", "[", 
+  RowBox[{"c", ",", "data", ",", "\"\<ConfusionMatrixPlot\>\""}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.630867648600237*^9, 3.6308676565540648`*^9}, {
+   3.630867771121253*^9, 3.63086777771408*^9}, 3.630867828332293*^9, 
+   3.630869325744793*^9, {3.630914973966075*^9, 3.630914996098914*^9}, 
+   3.6309584472994633`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"p", "[", 
+    RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"c", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+     "\"\<Probabilities\>\""}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.630867819622847*^9, 3.6308678252621107`*^9}, {
+   3.6308691733771343`*^9, 3.6308691771898737`*^9}, {3.630869392787488*^9, 
+   3.63086940158156*^9}, {3.630869450862756*^9, 3.6308694538945932`*^9}, {
+   3.630869515702869*^9, 3.630869563369855*^9}, {3.630869603360655*^9, 
+   3.630869637240996*^9}, {3.630870907575539*^9, 3.630870913716756*^9}, {
+   3.6308711117545223`*^9, 3.6308711298238363`*^9}, 3.630878445803628*^9, 
+   3.630878503299347*^9, 3.630912171949465*^9, {3.6309149793755913`*^9, 
+   3.630915002515946*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+   RowBox[{"Panel", "[", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Class:\>\"", ",", 
+        RowBox[{"PopupMenu", "[", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", "x", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Integrated Math I Stand\>\"", ",", 
+            "\"\<Integrated Math I Ext\>\""}], "}"}]}], "]"}], ",", 
+        "\"\<Semester 1 Grade:\>\"", ",", 
+        RowBox[{"InputField", "[", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", "y", "]"}], ",", "Number", ",", 
+          RowBox[{"ContinuousAction", "\[Rule]", "True"}]}], "]"}], ",", 
+        "\"\<MAP Score:\>\"", ",", 
+        RowBox[{"InputField", "[", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", "z", "]"}], ",", "Number", ",", 
+          RowBox[{"ContinuousAction", "\[Rule]", "True"}]}], "]"}], ",", 
+        RowBox[{"Button", "[", 
+         RowBox[{"\"\<Run Placement Algorithm\>\"", ",", 
+          RowBox[{"Print", "[", 
+           RowBox[{"p", "[", 
+            RowBox[{"x", ",", "y", ",", "z"}], "]"}], "]"}]}], "]"}]}], "}"}],
+       "}"}], "]"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.630871173833715*^9, 3.630871198907791*^9}, {
+   3.630871251475779*^9, 3.6308712734647617`*^9}, 3.630912174483172*^9, {
+   3.6309149853494387`*^9, 3.630915013254747*^9}}],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`x$$ = 
+  "Integrated Math I Stand", $CellContext`y$$, $CellContext`z$$}, 
+  PanelBox[
+   TagBox[GridBox[{
+      {"\<\"Class:\"\>", 
+       PopupMenuBox[Dynamic[$CellContext`x$$], {
+        "Integrated Math I Stand"->"\<\"Integrated Math I Stand\"\>", 
+        "Integrated Math I Ext"->"\<\"Integrated Math I Ext\"\>"}], \
+"\<\"Semester 1 Grade:\"\>", 
+       InputFieldBox[Dynamic[$CellContext`y$$], Number,
+        ContinuousAction->True], "\<\"MAP Score:\"\>", 
+       InputFieldBox[Dynamic[$CellContext`z$$], Number,
+        ContinuousAction->True], 
+       ButtonBox["\<\"Run Placement Algorithm\"\>",
+        Appearance->Automatic,
+        ButtonFunction:>Print[
+          $CellContext`p[$CellContext`x$$, $CellContext`y$$, \
+$CellContext`z$$]],
+        Evaluator->Automatic,
+        Method->"Preemptive"]}
+     },
+     AutoDelete->False,
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+    "Grid"]],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{3.630915063407187*^9, 3.63094139486488*^9, 
+  3.647603631261784*^9, 3.64760371587707*^9}]
+}, Open  ]]
+},
+WindowSize->{1117, 755},
+WindowMargins->{{Automatic, 151}, {45, Automatic}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 363, 8, 28, "Input"],
+Cell[924, 30, 512, 13, 28, "Input"],
+Cell[1439, 45, 263, 5, 28, "Input"],
+Cell[1705, 52, 240, 4, 28, "Input"],
+Cell[1948, 58, 379, 7, 28, "Input"],
+Cell[2330, 67, 829, 17, 28, "Input"],
+Cell[CellGroupData[{
+Cell[3184, 88, 1465, 35, 97, "Input"],
+Cell[4652, 125, 1129, 27, 63, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
